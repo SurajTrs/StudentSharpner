@@ -1,1 +1,16 @@
 
+node_modules/
+client/node_modules/
+server/node_modules/
+client/build/
+.env
+*.env
+client/.env
+server/.env
+.env.local
+client/.env.local
+server/.env.local
+.DS_Store
+*.log
+*.json
+!package*.json
