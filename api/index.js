@@ -7,6 +7,7 @@ require('dotenv').config({ path: __dirname + '/../server/.env' });
 const app = createApp();
 
 module.exports = (req, res) => {
-  const handler = serverless(app);
+  // Strip '/api' so Express routes mounted at '/api/*' work under Vercel's /api/*
+  const handler = serverless(app, { basePath: '/api' });
   return handler(req, res);
 };
