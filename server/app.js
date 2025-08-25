@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
 
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 const userDetailsRoutes = require('./routes/userDetailsRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
@@ -28,6 +30,8 @@ function initFirebase() {
 }
 
 module.exports = function createApp() {
+  // Initialize external services on cold start (serverless-safe)
+  connectDB();
   initFirebase();
   const app = express();
 
@@ -36,6 +40,7 @@ module.exports = function createApp() {
   app.use(bodyParser.json());
 
   // Routes
+  app.use('/api/auth', authRoutes);
   app.use('/api/user-details', userDetailsRoutes);
   app.use('/api/courses', courseRoutes);
   app.use('/api/payments', paymentRoutes);
