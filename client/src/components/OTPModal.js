@@ -34,7 +34,7 @@ const OtpModel = () => {
     }
 
     try {
-      const response = await fetch('/api/auth/verify-otp', {
+      const response = await fetch('http://localhost:5001/api/auth/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, code: otp }),
@@ -63,7 +63,7 @@ const OtpModel = () => {
 
   const handleResendOtp = async () => {
     try {
-      const response = await fetch('/api/auth/resend-otp', {
+      const response = await fetch('http://localhost:5001/api/auth/resend-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone }),

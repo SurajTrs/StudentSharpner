@@ -125,7 +125,7 @@ const MyCoursesPage = () => {
 
       // 2) Background refresh
       try {
-        const url = `/api/courses/my?email=${encodeURIComponent(user.email.toLowerCase())}`;
+        const url = `http://localhost:5001/api/courses/my?email=${encodeURIComponent(user.email.toLowerCase())}`;
         const controller = new AbortController();
         const id = setTimeout(() => controller.abort(), 10000); // 10s timeout
         const res = await fetch(url, { signal: controller.signal });

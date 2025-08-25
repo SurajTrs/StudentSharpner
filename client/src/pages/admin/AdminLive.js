@@ -11,7 +11,7 @@ export default function AdminLive() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch('/api/courses');
+        const res = await fetch('http://localhost:5001/api/courses');
         const data = (res.ok && (await res.json())) || [];
         setCourses(Array.isArray(data) ? data : []);
       } catch {}
