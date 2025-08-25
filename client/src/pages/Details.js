@@ -50,7 +50,7 @@ const DetailsPage = () => {
         ...(user && user.phone ? { phone: user.phone } : {}),
       };
 
-      const response = await fetch('http://localhost:5001/api/user-details/submit', {
+      const response = await fetch('/api/user-details/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

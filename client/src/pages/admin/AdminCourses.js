@@ -7,7 +7,7 @@ export default function AdminCourses() {
 
   const loadCourses = async () => {
     try {
-      const res = await fetch('http://localhost:5001/api/courses');
+      const res = await fetch('/api/courses');
       const data = (res.ok && (await res.json())) || [];
       setCourses(Array.isArray(data) ? data : []);
     } catch (e) {
@@ -22,7 +22,7 @@ export default function AdminCourses() {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await fetch('http://localhost:5001/api/courses', {
+      const resp = await fetch('/api/courses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

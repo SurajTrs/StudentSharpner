@@ -21,7 +21,7 @@ const LiveClasses = () => {
           setPurchased([]);
           return;
         }
-        const url = `http://localhost:5001/api/courses/my?email=${encodeURIComponent(user.email.toLowerCase())}`;
+        const url = `/api/courses/my?email=${encodeURIComponent(user.email.toLowerCase())}`;
         const res = await fetch(url);
         const data = (res.ok && (await res.json())) || [];
         const arr = Array.isArray(data) ? data : [];
@@ -50,7 +50,7 @@ const LiveClasses = () => {
     const cls = (selectedClass || '').trim();
     if (!cls) { setLiveClasses([]); return; }
     axios
-      .get(`http://localhost:5001/api/courses/live/${encodeURIComponent(cls)}`)
+      .get(`/api/courses/live/${encodeURIComponent(cls)}`)
       .then((res) => {
         setLiveClasses(res.data || []);
       })

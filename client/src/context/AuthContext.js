@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
       // If the course doesn't exist in backend, create it to obtain an ID
       if (!courseId) {
         try {
-          const resp = await fetch('http://localhost:5001/api/courses', {
+          const resp = await fetch('/api/courses', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -115,7 +115,7 @@ export const AuthProvider = ({ children }) => {
 
       // Record purchase idempotently
       try {
-        await fetch('http://localhost:5001/api/courses/purchase', {
+        await fetch('/api/courses/purchase', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userEmail: email, courseId }),
